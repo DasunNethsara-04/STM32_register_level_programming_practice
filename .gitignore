@@ -1,0 +1,11 @@
+build
+mx.scratch
+
+# IDE files
+.vscode/
+.settings
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
