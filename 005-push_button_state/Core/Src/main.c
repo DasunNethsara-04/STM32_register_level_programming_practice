@@ -15,7 +15,7 @@ int main(void) {
 
   // set the pin mode
   // input
-  GPIOA->MODER |= GPIO_MODER_MODER4_0;
+  GPIOA->MODER &= ~GPIO_MODER_MODER4_0;
   GPIOA->MODER &= ~GPIO_MODER_MODER4_1;
 
   // output
