@@ -1,6 +1,11 @@
 #include "stm32f411xe.h"
+#include "stm32f4xx_hal.h"
+#include <stdbool.h>
+#include <stdint.h>
 
 int main(void) {
+  HAL_Init();
+
   RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
   RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
 
@@ -19,11 +24,19 @@ int main(void) {
   GPIOA->PUPDR &= ~GPIO_PUPDR_PUPD4;
   GPIOB->PUPDR &= ~GPIO_PUPDR_PUPD5;
 
-  while (1) {
-    // check for microhpne inputs
-    if (GPIOA->IDR & GPIO_IDR_ID4) {
-      // if so, toggle the LED state
-      GPIOB->ODR ^= GPIO_ODR_OD5;
+  uint8_t previousMicState = !!(GPIOA->IDR & GPIO_IDR_ID4);
+  uint8_t currentMicState;
+
+  while (true) {
+    currentMicState = !!(GPIOA->IDR & GPIO_IDR_ID4);
+    if (currentMicState == 1 && previousMicState == 0) {
+      // HAL_Delay(20);
+      currentMicState = !!(GPIOA->IDR & GPIO_IDR_ID4);
+      if (currentMicState) {
+        // toggle the LED state
+        GPIOB->ODR ^= GPIO_ODR_OD5;
+      }
     }
+    previousMicState = currentMicState;
   }
 }
