@@ -1,0 +1,5 @@
+../Core/Src/LCDFunctions.c:27:6:EnableClockForThePort	16	static
+../Core/Src/LCDFunctions.c:42:6:SetupPinsAndPortsForOutput	16	static
+../Core/Src/LCDFunctions.c:58:6:InitializePins	8	static
+../Core/Src/LCDFunctions.c:69:6:SendBitToThePin	16	static
+../Core/Src/LCDFunctions.c:76:6:SendCharToLCDDataPins	16	static
