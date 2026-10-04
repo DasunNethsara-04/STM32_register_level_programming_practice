@@ -1,9 +1,34 @@
-build
+﻿# Build output directories
+build/
+Debug/
+Release/
+
+# CMake scratch
 mx.scratch
 
-# IDE files
+# Build artifacts (safety net by extension)
+*.elf
+*.bin
+*.hex
+*.map
+*.a
+*.o
+*.d
+
+# STM32CubeIDE / Eclipse project files (machine-specific)
+*.launch
+.cproject
+.project
+
+# CubeMX internal metadata (redundant with .ioc)
+.mxproject
+
+# clangd per-project config
+.clangd
+
+# IDE folders
 .vscode/
-.settings
+.settings/
 .idea/
 
 # OS files
